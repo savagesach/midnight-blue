@@ -141,17 +141,13 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
-
-   
-
+ 
 //computer randomly places ships
 function randomPlace(){
-
     var row;
     var col;
     var isHorizontal;
     var boatPlaced = false;
-
 
     for(ship of allShips){
         do{
@@ -169,15 +165,17 @@ function randomPlace(){
                     if (computerGrid[row][c] == "*"){
                         boatPlaced = false;
                     }
+                    else{ boatPlaced = true;}
                 }
                 if(boatPlaced){
                     for (var c = col; c < col + length; c++){
                         computerGrid[row][c] = "*";
                     }
 
-                    }
+                }
                 }
             }
+            //if vertical
             else{
                 if(col+ length > computerGrid.length){
                     boatPlaced = false
@@ -187,8 +185,10 @@ function randomPlace(){
                     if (computerGrid[r][col] == "*"){
                         boatPlaced = false;
                     }
+                    else{ boatPlaced = true;}
                 }
                 if(boatPlaced){
+                    
                     for (var r = row; r < row + length; r++){
                         computerGrid[r][col] = "*";
                     }
@@ -196,10 +196,8 @@ function randomPlace(){
                     }
                 }
             }
-
         }while(boatPlaced == false)
-
     }
-
 }
+
   
