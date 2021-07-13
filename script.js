@@ -16,6 +16,16 @@ for(var i = 0; i < 8; i++)
         computerGrid[i][j]
     }
 }
+var carrier = {name: "carrier", length: 5};
+var battleship = {name: "Battleship", length: 4};
+var cruiser = {name: "Cruiser", length: 3};
+var submarine = {name: "Submarine", length: 3};
+var destroyer = {name: "Destroyer", length: 2};
+
+var allShips = [carrier, battleship, cruiser, submarine, destroyer];
+
+   
+
 
 //computer randomly places ships
 function randomPlace(){
@@ -28,7 +38,8 @@ function randomPlace(){
     for(ship of allShips){
         do{
             isHorizontal = (Math.floor(Math.random()*2) == 1);
-            
+            var length = ship.name;
+
 
         }while(boatPlaced == false)
 
