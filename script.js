@@ -22,8 +22,15 @@ function randomPlace(){
 
     var spot;
     var isHorizontal;
+    var boatPlaced = false;
+
 
     for(ship of allShips){
+        do{
+            isHorizontal = (Math.floor(Math.random()*2) == 1);
+            
+
+        }while(boatPlaced == false)
 
         
     }
