@@ -7,3 +7,17 @@ for(var i = 0; i < 8; i++)
         d.classList.add('MyClass');
         userGrid[i][j] = d;
     }
+
+//computer randomly places ships
+function randomPlace(){
+
+    var spot;
+    var isHorizontal;
+
+    for(ship of allShips){
+
+        
+    }
+
+
+}
