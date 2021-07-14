@@ -5,15 +5,34 @@
     <title>Battle Ships</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap" rel="stylesheet">
+    <script src="app.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="splash-container">
       <h1 class="splash-title">Battleships</h1>
       <div>
-        <a href="singleplayer.html" class="btn splash-btn">Play against the CPU!</a>
+        <a href="singleplayer.html" class="btn splash-btn">Play against the CPU!</a><br><br>
+        <button class="btn help splash-btn" onclick="getHelp()">Instructions!
+          <span class="helptext" id="rules">
+            <div>How to Play Battleship:</div>
+            <ul>1. Place your ships on the board either horizontally or vertically</ul>
+            <ul>Note: You need to have at least 1 empty space around all your ships</ul>
+            <ul>2. Take turns with CPU guessing whether the enemy battleships are</ul>
+            <ul>If you correctly guess, you get another guess!</ul>
+            <ul>3. Keep guessing until you or the CPU have guessed and sunk all the opponent's ships.</ul>
+            <ul>4. Reset the game and play again!</ul>
+          </span>
+        </button>
       </div>
     </div>
 
     <img src="/images/battleship-large.svg" class="splash-battleship-image">
   </body>
-</html>
+  <script>
+      // When the user clicks on btn, open the popup for instructions
+    function getHelp() {
+    var popup = document.getElementById("rules");
+    popup.classList.toggle("popup");
+    }
+  </script>
+</html> 
