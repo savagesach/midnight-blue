@@ -140,7 +140,3 @@ function getHelp() {
   var popup = document.getElementById("rules");
   popup.classList.toggle("popup");
   }
-document.getElementsByClassName("oneByOne").onclick=hit();
-  function hit() {
-  document.body.style.color = "gray";
-}
