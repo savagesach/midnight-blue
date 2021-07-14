@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSquares = []
     const computerSquares = []
     let isHorizontal = true
+    let allShipsPlaced = false
     const width = 10
 
     createBoard(userGrid, userSquares)
