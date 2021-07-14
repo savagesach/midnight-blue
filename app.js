@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     const width = 10
    
-    createBoard(userGrid, userSquares)
-    createBoard(computerGrid, computerSquares)
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares,  100)
 
      //Create Board
-     function createBoard(grid, squares) {
-        for (let i = 0; i < width*width; i++) {
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
           const square = document.createElement('div')
           square.dataset.id = i
           grid.appendChild(square)
@@ -143,12 +143,16 @@ var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
  
+
+randomPlace();
+
 //computer randomly places ships
 function randomPlace(){
     var row;
     var col;
     var isHorizontal;
     var boatPlaced = false;
+    let computerGrid = document.querySelectorAll('.grid-computer');
 
     for(ship of allShips){
         do{
@@ -170,7 +174,8 @@ function randomPlace(){
                 }
                 if(boatPlaced){
                     for (var c = col; c < col + length; c++){
-                        computerGrid[row][c] = "*";
+                        computerGrid[row][c] = "*"; 
+                        computerGrid[row][c].style.backgroundColor = blue;
                     }
 
                 }
@@ -191,7 +196,8 @@ function randomPlace(){
                 if(boatPlaced){
                     
                     for (var r = row; r < row + length; r++){
-                        computerGrid[r][col] = "*";
+                        computerGrid[r][col] = "*"; 
+                        computerGrid[row][c].style.backgroundColor = blue;
                     }
 
                     }
@@ -206,6 +212,22 @@ function randomPlace(){
         function getHelp() {
           var popup = document.getElementById("rules");
           popup.classList.toggle("popup");
+          }
+
+          document.getElementsByClassName("grid-computer").addEventListener(click, boxChecker)
+          
+          function boxChecker()
+          {
+            var clickedBox;
+            for(var i = 100; i < 200; i++)
+            {
+              if(document.getElementById(i).style.backgroundColor == "red")
+              {
+                clickedBox = document.getElementById(i);
+                break;
+              }
+            }
+            clickedBox.style.backgroundColor = blue;
           }
 
     }
