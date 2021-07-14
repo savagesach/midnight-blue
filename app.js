@@ -14,12 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     const width = 10
 
-    createBoard(userGrid, userSquares)
-    createBoard(computerGrid, computerSquares)
+
+
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
 
      //Create Board
-     function createBoard(grid, squares) {
-        for (let i = 0; i < width*width; i++) {
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
           const square = document.createElement('div')
           square.dataset.id = i
           grid.appendChild(square)
@@ -27,6 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
           square.className += "oneByOne";
         }
       }
+
+      //Computer Array
+    computerArray = [];
+    let count = 0;
+    for(var i = 0; i < 10; i++)
+    {
+        var tempArr = [];
+        for(var j = 0; j < 10; j++)
+        {
+            tempArr.push[document.getElementById(count)];
+            count++;
+        }
+        computerArray.push(tempArr);
+    }
+
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
