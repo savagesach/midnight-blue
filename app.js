@@ -203,17 +203,15 @@ function randomPlace(){
                 }
             }
         }while(boatPlaced == false)
-
-        function Reset() {
-          location.reload();
-        }
-        // When the user clicks on btn, open the popup for instructions
-        function getHelp() {
-          var popup = document.getElementById("rules");
-          popup.classList.toggle("popup");
-          }
-
     }
 }
+function Reset() {
+  location.reload();
+}
+// When the user clicks on btn, open the popup for instructions
+function getHelp() {
+  var popup = document.getElementById("rules");
+  popup.classList.toggle("popup");
+  }
 
   
