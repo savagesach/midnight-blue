@@ -1,0 +1,7 @@
+<button id="clear" class="btn" onclick="Reset()">Help</button>
+
+<script>
+    function Reset() {
+  location.reload();
+}
+</script>
