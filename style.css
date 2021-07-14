@@ -196,3 +196,49 @@ body {
   .info-text {
     margin: 1rem;
   }
+
+  .help {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    
+    /* The actual popup */
+    .help .helptext {
+      visibility: hidden;
+      width: 600px;
+      background-color: #555;
+      color: #fff;
+      font-size:medium;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      left: -50%;
+      top:120%;
+    }
+    /* Toggle this class - hide and show the popup */
+    .help .popup {
+      visibility: visible;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s;
+    }
+    
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+      from {opacity: 0;} 
+      to {opacity: 1;}
+    }
+    
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity:1 ;}
+    }
+    /*changes color when you hover over the computer grid*/
+    .grid-computer .oneByOne:hover {
+      background-color: red;
+    }

@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
           square.dataset.id = i
           grid.appendChild(square)
           squares.push(square)
+          square.className += "oneByOne";
         }
       }
 
@@ -131,20 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function dragEnd() {
       // console.log('dragend')
     }
-  
-    //User clicks on enemy board
-    document.querySelectorAll('.grid-computer').forEach(item => {
-      item.addEventListener('click', event => {
-        console.log("click");
-        if (item.style.backgroundColor === 'red') {
-          item.style.backgroundColor = 'blue';
-        }
-        else {
-          item.style.backgroundColor = 'red'
-        }
-      })
-    })
-
 
   })
 
@@ -211,6 +198,16 @@ function randomPlace(){
                 }
             }
         }while(boatPlaced == false)
+
+        function Reset() {
+          location.reload();
+        }
+        // When the user clicks on btn, open the popup for instructions
+        function getHelp() {
+          var popup = document.getElementById("rules");
+          popup.classList.toggle("popup");
+          }
+
     }
 }
 
