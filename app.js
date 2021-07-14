@@ -212,5 +212,3 @@ function getHelp() {
   var popup = document.getElementById("rules");
   popup.classList.toggle("popup");
   }
-
-  
