@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   })
-document.getElementById('1').style.backgroundColor = 'green' ;
+
 var carrier = {name: "carrier", length: 5};
 var battleship = {name: "Battleship", length: 4};
 var cruiser = {name: "Cruiser", length: 3};
