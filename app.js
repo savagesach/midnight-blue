@@ -141,8 +141,9 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
- 
 //computer randomly places ships
+randomPlace();
+//what should be the grid that this is editing?
 function randomPlace(){
     var row;
     var col;
@@ -186,13 +187,11 @@ function randomPlace(){
                         boatPlaced = false;
                     }
                     else{ boatPlaced = true;}
+                    }
                 }
                 if(boatPlaced){
-                    
                     for (var r = row; r < row + length; r++){
                         computerGrid[r][col] = "*";
-                    }
-
                     }
                 }
             }
