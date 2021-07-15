@@ -34,20 +34,71 @@ document.addEventListener('DOMContentLoaded', () => {
       //Computer Array
     computerArray = [];
     let count = 100;
+          square.className += "oneByOne";
+        } 
+      }
+
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      //Computer Array
+    computerArray = [];
+    let count = 0;
     for(var i = 0; i < 10; i++)
     {
         var tempArr = [];
         for(var j = 0; j < 10; j++)
         {
-            if(document.getElementById(count))
-            {
-              console.log("yes");
-            }
+            tempArr.push[document.getElementById(count)];
+            count++;
+        }
+        computerArray.push(tempArr);
+    }createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      //Computer Array
+    computerArray = [];
+    count = 0;
+    for(var i = 0; i < 10; i++)
+    {
+        var tempArr = [];
+        for(var j = 0; j < 10; j++)
+        {
             tempArr.push[document.getElementById(count)];
             count++;
         }
         computerArray.push(tempArr);
     }
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
 
     //When user clicks
 for(var d = 100; d < 200; d++)
@@ -73,7 +124,19 @@ for(var d = 100; d < 200; d++)
   }, false);
 }
 
-
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
@@ -194,6 +257,7 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
+
 // //computer randomly places ships
 // randomPlace();
 // //what should be the grid that this is editing?
@@ -252,6 +316,63 @@ var allShips = [carrier, battleship, cruiser, submarine, destroyer];
 //         }while(boatPlaced == false)
 //     }
 // }
+//computer randomly places ships
+randomPlace();
+//what should be the grid that this is editing?
+function randomPlace(){
+    var row;
+    var col;
+    var isHorizontal;
+    var boatPlaced = false;
+
+    for(ship of allShips){
+        do{
+            isHorizontal = (Math.floor(Math.random()*2) == 1);
+            var length = ship.length;
+            row = Math.floor(Math.random()* 10);
+            col = Math.floor(Math.random()* 10);
+
+            if(isHorizontal){
+                if(col + length > 10){
+                    boatPlaced = false
+                }
+                else {
+                    for (var c = col; c < col + length; c++){
+                    if (computerArray[row][c] == "*"){
+                        boatPlaced = false;
+                    }
+                    else{ boatPlaced = true;}
+                }
+                if(boatPlaced){
+                    for (var c = col; c < col + length; c++){
+                        computerArray[row][c] = "*";
+                        console.log([row][c]);
+                    }
+                }
+                }
+            }
+            //if vertical
+            else{
+                if(row + length >= 10){
+                    boatPlaced = false
+                }
+                else {
+                    for (var r = row; r < row + length; r++){
+                    if (computerArray[r][col] == "*"){
+                        boatPlaced = false;
+                    }
+                    else{ boatPlaced = true;}
+                    }
+                }
+                if(boatPlaced){
+                    for (var r = row; r < row + length; r++){
+                        computerArray[r][col] = "*";
+                    }
+                }
+            }
+        }while(boatPlaced == false)
+    }
+}
 function Reset() {
   location.reload();
 }
@@ -267,6 +388,7 @@ function getHelp() {
 //when user clicks start game:
 function startGame(){
   document.getElementById("whose-go").innerHTML = "Choose your target";
+  document.getElementById("setup-buttons").innerHTML = " ";
 }
 
 
