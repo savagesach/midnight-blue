@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let allShipsPlaced = false
     const width = 10
 
-
-
     createBoard(userGrid, userSquares, 0)
     createBoard(computerGrid, computerSquares, 100)
 
@@ -42,18 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
       }
 
-    createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
       //Computer Array
     computerArray = [];
     let count = 0;
@@ -66,44 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             count++;
         }
         computerArray.push(tempArr);
-    }createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
-      //Computer Array
-    computerArray = [];
-    count = 0;
-    for(var i = 0; i < 10; i++)
-    {
-        var tempArr = [];
-        for(var j = 0; j < 10; j++)
-        {
-            tempArr.push[document.getElementById(count)];
-            count++;
-        }
-        computerArray.push(tempArr);
     }
-    createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
-
 
     //When user clicks
 // for(var d = 100; d < 200; d++)
@@ -122,19 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //   }, false);
 // }
 
-    createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
-      
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
@@ -461,6 +397,15 @@ function randomPlace(){
         }while(boatPlaced == false)
     }
 }
+randomPlace(allShips[0])
+randomPlace(allShips[1])
+randomPlace(allShips[2])
+randomPlace(allShips[3])
+randomPlace(allShips[4])
+
+document.getElementById("start").addEventListener("click", randomPlace)
+document.getElementById("start").addEventListener("click", startGame)
+
 function Reset() {
   location.reload();
 }
@@ -470,14 +415,52 @@ function getHelp() {
   popup.classList.toggle("popup");
   }
 
-
-
-  
-//when user clicks start game:
-function startGame(){
-  document.getElementById("whose-go").innerHTML = "Choose your target";
-  document.getElementById("setup-buttons").innerHTML = " ";
+function startGame() {
+  if(isGameOver) return
+  if(currentPlayer=== "user"){
+      document.getElementById("whose-go").innerHTML = "Your Turn!";
+      computerSquares.forEach(square => square.addEventListener('click',function(e){
+        fire(square)
+      }))
+    }
+    if(currentPlayer==="computer"){
+      whoseTurn.innerHTML = "CPU Turn!";
+      computerFire()
+    }
+  }
+startButton.addEventListern("click", startGame)
+function Reset() {
+  location.reload();
+}
+  else{
+    square.ClassList.add("miss")
+  }
+currentPlayer = "computer"
+startGame()
 }
 
-
-
+function computerFire(){
+let randomFire = Math.floor(Math.random()*userSquares.length)
+if(userSquares[randomFire].classList.contains('taken')){
+  userSquares[randomFire].classList.add('hit')
+}
+else{
+  userSquares[randomFire].classList.add('miss')
+}
+currentPlayer = "user"
+document.getElementById("whose-go").innerHTML = "Your Turn"
+}
+function endGame(){
+  if(!userSquares.classList.contains('taken')){
+    document.getElementById("whose-go").innerHTML = "CPU has won the game!"
+    gameOver()
+  }
+  if(!computerSqaures.classList.contains('taken')){
+    document.getElementById("whose-go").innerHTML = "You have won the game!"
+    gameOver()
+  }
+}
+function gameOver(){
+  isGameOver = true
+  startButton.innerHTML = "Restart Game"
+}
