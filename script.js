@@ -1,4 +1,3 @@
-
 for(let row of rowElements) 
 {
     let rowArray = [];
@@ -28,7 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     let allShipsPlaced = false
 
+//starts the actual game
+function startGame(){
+    document.getElementById("setup-buttons").innerHTML = "";
+    document.getElementById("whose-go").innerHTML = "Choose your target";
+}
+
+//resets the page
+function Reset() {
+    location.reload();
+  }
+
+//when user chooses a computer place to guess - also makes a fire button appear 
 function chosen(){
+    document.getElementById("buttonAppear").innerHTML = '<button onclick="fire()">Click to fire!</button>';
     if(document.querySelectorAll(".selected") != null){
       document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
     }
@@ -269,6 +281,13 @@ function chosen(){
         }
     })
 
+//allows the user to lock in their guess and see if they were correct or not
+function fire(){
+    
+}
+//////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
+
+
 //Randomizing for computer
 var carrier = {name: "carrier", length: 5};
 var battleship = {name: "Battleship", length: 4};
@@ -279,4 +298,12 @@ var destroyer = {name: "Destroyer", length: 2};
 var allShips = [carrier, battleship, cruiser, submarine, destroyer]; 
 while(allShips.length > 0)
 {
+
 }
+
+
+}
+
+
+//////////////////////////////////Computer randomly guess*/////////////////////////////////////////////////////////////////////////////
+
