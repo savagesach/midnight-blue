@@ -32,8 +32,78 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       //Computer Array
+
     const computerArray = [[document.getElementById('100'),document.getElementById('101'),document.getElementById('102'),document.getElementById('103'),document.getElementById('104'),document.getElementById('105'),document.getElementById('106'),document.getElementById('107'),document.getElementById('108'),document.getElementById('109')] , [document.getElementById('110'),document.getElementById('111'),document.getElementById('112'),document.getElementById('113'),document.getElementById('114'),document.getElementById('115'),document.getElementById('116'),document.getElementById('117'),document.getElementById('118'),document.getElementById('119')] , [document.getElementById('120'),document.getElementById('121'),document.getElementById('122'),document.getElementById('123'),document.getElementById('124'),document.getElementById('125'),document.getElementById('126'),document.getElementById('127'),document.getElementById('128'),document.getElementById('129')] , [document.getElementById('130'),document.getElementById('131'),document.getElementById('132'),document.getElementById('133'),document.getElementById('134'),document.getElementById('135'),document.getElementById('136'),document.getElementById('137'),document.getElementById('138'),document.getElementById('139')] , [document.getElementById('140'),document.getElementById('141'),document.getElementById('142'),document.getElementById('143'),document.getElementById('144'),document.getElementById('145'),document.getElementById('146'),document.getElementById('147'),document.getElementById('148'),document.getElementById('149')] , [document.getElementById('100'),document.getElementById('101'),document.getElementById('152'),document.getElementById('153'),document.getElementById('154'),document.getElementById('155'),document.getElementById('156'),document.getElementById('157'),document.getElementById('158'),document.getElementById('159')] , [document.getElementById('160'),document.getElementById('161'),document.getElementById('162'),document.getElementById('163'),document.getElementById('164'),document.getElementById('165'),document.getElementById('166'),document.getElementById('167'),document.getElementById('168'),document.getElementById('169')] , [document.getElementById('170'),document.getElementById('171'),document.getElementById('172'),document.getElementById('173'),document.getElementById('174'),document.getElementById('175'),document.getElementById('176'),document.getElementById('177'),document.getElementById('178'),document.getElementById('179')] , [document.getElementById('180'),document.getElementById('181'),document.getElementById('182'),document.getElementById('183'),document.getElementById('184'),document.getElementById('185'),document.getElementById('186'),document.getElementById('187'),document.getElementById('188'),document.getElementById('189')] , [document.getElementById('190'),document.getElementById('191'),document.getElementById('192'),document.getElementById('193'),document.getElementById('194'),document.getElementById('195'),document.getElementById('196'),document.getElementById('197'),document.getElementById('198'),document.getElementById('199')]];
     
+
+    computerArray = [];
+    let count = 100;
+          square.className += "oneByOne";
+        } 
+      }
+
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      //Computer Array
+    computerArray = [];
+    let count = 0;
+    for(var i = 0; i < 10; i++)
+    {
+        var tempArr = [];
+        for(var j = 0; j < 10; j++)
+        {
+            tempArr.push[document.getElementById(count)];
+            count++;
+        }
+        computerArray.push(tempArr);
+    }createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      //Computer Array
+    computerArray = [];
+    count = 0;
+    for(var i = 0; i < 10; i++)
+    {
+        var tempArr = [];
+        for(var j = 0; j < 10; j++)
+        {
+            tempArr.push[document.getElementById(count)];
+            count++;
+        }
+        computerArray.push(tempArr);
+    }
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+
 
     //When user clicks
 // for(var d = 100; d < 200; d++)
@@ -52,7 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
 //   }, false);
 // }
 
-
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
+      
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
@@ -173,6 +255,7 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
+
 //computer randomly places ships
 var printArr = []
 for(var i = 0; i < 10; i++)
@@ -260,6 +343,12 @@ computerPlace();
 
 console.log(printArr);
 //what should be the grid that this is editing?
+
+
+// //computer randomly places ships
+// randomPlace();
+// //what should be the grid that this is editing?
+
 // function randomPlace(){
 //     var row;
 //     var col;
@@ -315,6 +404,63 @@ console.log(printArr);
 //         }while(boatPlaced == false)
 //     }
 // }
+//computer randomly places ships
+randomPlace();
+//what should be the grid that this is editing?
+function randomPlace(){
+    var row;
+    var col;
+    var isHorizontal;
+    var boatPlaced = false;
+
+    for(ship of allShips){
+        do{
+            isHorizontal = (Math.floor(Math.random()*2) == 1);
+            var length = ship.length;
+            row = Math.floor(Math.random()* 10);
+            col = Math.floor(Math.random()* 10);
+
+            if(isHorizontal){
+                if(col + length > 10){
+                    boatPlaced = false
+                }
+                else {
+                    for (var c = col; c < col + length; c++){
+                    if (computerArray[row][c] == "*"){
+                        boatPlaced = false;
+                    }
+                    else{ boatPlaced = true;}
+                }
+                if(boatPlaced){
+                    for (var c = col; c < col + length; c++){
+                        computerArray[row][c] = "*";
+                        console.log([row][c]);
+                    }
+                }
+                }
+            }
+            //if vertical
+            else{
+                if(row + length >= 10){
+                    boatPlaced = false
+                }
+                else {
+                    for (var r = row; r < row + length; r++){
+                    if (computerArray[r][col] == "*"){
+                        boatPlaced = false;
+                    }
+                    else{ boatPlaced = true;}
+                    }
+                }
+                if(boatPlaced){
+                    for (var r = row; r < row + length; r++){
+                        computerArray[r][col] = "*";
+                    }
+                }
+            }
+        }while(boatPlaced == false)
+    }
+}
 function Reset() {
   location.reload();
 }
@@ -330,6 +476,7 @@ function getHelp() {
 //when user clicks start game:
 function startGame(){
   document.getElementById("whose-go").innerHTML = "Choose your target";
+  document.getElementById("setup-buttons").innerHTML = " ";
 }
 
 
