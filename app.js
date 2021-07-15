@@ -138,8 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // console.log('dragend')
     }
 
-  })
-
+  }) 
 var carrier = {name: "carrier", length: 5};
 var battleship = {name: "Battleship", length: 4};
 var cruiser = {name: "Cruiser", length: 3};
@@ -207,6 +206,7 @@ function randomPlace(){
 function Reset() {
   location.reload();
 }
+
 // When the user clicks on btn, open the popup for instructions
 function getHelp() {
   var popup = document.getElementById("rules");
@@ -220,5 +220,5 @@ function startGame(){
   document.getElementById("whose-go").innerHTML = "Choose your target";
 }
 
-  
+
 

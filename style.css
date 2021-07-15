@@ -1,5 +1,4 @@
 
-
 /* .grid{
     width: 50px;
     height: 50px;
@@ -54,11 +53,6 @@ body {
     font-size: 2rem;
     margin-left: 2rem;
   }
-
-  
-  /* .splash-btn:first-child {
-    margin-left: 0;
-  } */
   
   .container {
     display: flex;
@@ -73,12 +67,6 @@ body {
     grid-template-rows: repeat(10, 4.6vmin);
     grid-template-columns: repeat(10, 4.6vmin);
   }
-
-  /* .grid-computer > .taken,
-  .grid-computer > .boom {
-    background-color: skyblue !important;
-    border-radius: 0 !important;
-  } */
 
   .taken,
   .ship {
