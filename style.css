@@ -1,13 +1,13 @@
 
 
-.grid{
+/* .grid{
     width: 50px;
     height: 50px;
     background-color: red;
     border-style: solid;
     border-width: 1px;
-}
-body {
+} */
+body {              
     margin: 0;
     background-color: #F3F3F3;
     overflow-x: hidden;
@@ -56,9 +56,9 @@ body {
   }
 
   
-  .splash-btn:first-child {
+  /* .splash-btn:first-child {
     margin-left: 0;
-  }
+  } */
   
   .container {
     display: flex;
@@ -74,11 +74,11 @@ body {
     grid-template-columns: repeat(10, 4.6vmin);
   }
 
-  .grid-computer > .taken,
+  /* .grid-computer > .taken,
   .grid-computer > .boom {
     background-color: skyblue !important;
     border-radius: 0 !important;
-  }
+  } */
 
   .taken,
   .ship {
