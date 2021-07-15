@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     const width = 10
 
-    createBoard(userGrid, userSquares)
-    createBoard(computerGrid, computerSquares)
-
      //Create Board
      function createBoard(grid, squares) {
         for (let i = 0; i < width*width; i++) {
@@ -26,6 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
           squares.push(square)
           square.className += "oneByOne";
         }
+      }
+      createBoard(userGrid, userSquares)
+      createBoard(computerGrid, computerSquares)
+        //Computer Array
+      computerArray = [];
+      let count = 0;
+      for(var i = 0; i < 10; i++)
+      {
+          var tempArr = [];
+          for(var j = 0; j < 10; j++)
+          {
+              tempArr.push[document.getElementById(count)];
+              count++;
+          }
+          computerArray.push(tempArr);
       }
     //Rotate the ships
     function rotate() {
@@ -205,6 +217,16 @@ function randomPlace(){
         }while(boatPlaced == false)
     }
 }
+function startGame() {
+  if(isGameOver) return
+  if(currentPlayer=== "user"){
+    document.getElementbyId("whose-go").innerHTML = "Your Turn!";
+  }
+  if(currentPlayer==="computer"){
+    document.getElementbyId("whose-go").innerHTML = "CPU Turn!";
+  }
+}
+startButton.addEventListern("click", startGame)
 function Reset() {
   location.reload();
 }
