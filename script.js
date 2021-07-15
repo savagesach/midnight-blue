@@ -13,12 +13,30 @@ for(let row of rowElements)
 }
     
 ////////////////////Clicking & Selecting//////////////////////////////////////////////////////////////////////////////
+//starts the actual game
+function startGame(){
+    document.getElementById("setup-buttons").innerHTML = "";
+    document.getElementById("whose-go").innerHTML = "Choose your target";
+}
+
+//resets the page
+function Reset() {
+    location.reload();
+  }
+
+//when user chooses a computer place to guess - also makes a fire button appear 
 function chosen(){
+    document.getElementById("buttonAppear").innerHTML = '<button onclick="fire()">Click to fire!</button>';
     if(document.querySelectorAll(".selected") != null){
       document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
     }
     this.classList.add("selected");
   }
+
+//allows the user to lock in their guess and see if they were correct or not
+function fire(){
+
+}
 //////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
 
 //Randomizing for computer
