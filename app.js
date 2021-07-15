@@ -15,18 +15,65 @@ document.addEventListener('DOMContentLoaded', () => {
     let allShipsPlaced = false
     const width = 10
 
-    createBoard(userGrid, userSquares)
-    createBoard(computerGrid, computerSquares)
+
+
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
 
      //Create Board
-     function createBoard(grid, squares) {
-        for (let i = 0; i < width*width; i++) {
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
           const square = document.createElement('div')
           square.className = i
+          square.id = i
           grid.appendChild(square)
           squares.push(square)
         }
       }
+
+      //Computer Array
+    computerArray = [];
+    let count = 100;
+    for(var i = 0; i < 10; i++)
+    {
+        var tempArr = [];
+        for(var j = 0; j < 10; j++)
+        {
+            if(document.getElementById(count))
+            {
+              console.log("yes");
+            }
+            tempArr.push[document.getElementById(count)];
+            count++;
+        }
+        computerArray.push(tempArr);
+    }
+
+    //When user clicks
+for(var d = 100; d < 200; d++)
+{
+  console.log(d);
+  if(document.getElementById(d))
+  {
+    console.log(true);
+  }
+  else{
+    console.log(false);
+  }
+  document.getElementById(d + '').addEventListener("mouseover", function(){
+    document.getElementById(d + '').style.backgroundColor = "white";
+  }, false);
+
+  document.getElementById(d + '').addEventListener("mouseout", function(){
+    document.getElementById(d + '').style.backgroundColor = "blue";
+  }, false);
+
+  document.getElementById(d + '').addEventListener("click", function(){
+    document.getElementById(d + '').style.backgroundColor = "red";
+  }, false);
+}
+
+
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
@@ -147,63 +194,64 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer];
-//computer randomly places ships
-randomPlace();
-//what should be the grid that this is editing?
-function randomPlace(){
-    var row;
-    var col;
-    var isHorizontal;
-    var boatPlaced = false;
+// //computer randomly places ships
+// randomPlace();
+// //what should be the grid that this is editing?
+// function randomPlace(){
+//     var row;
+//     var col;
+//     var isHorizontal;
+//     var boatPlaced = false;
 
-    for(ship of allShips){
-        do{
-            isHorizontal = (Math.floor(Math.random()*2) == 1);
-            var length = ship.length;
-            row = Math.floor(Math.random()* 10);
-            col = Math.floor(Math.random()* 10);
+//     for(ship of allShips){
+//         do{
+//             isHorizontal = (Math.floor(Math.random()*2) == 1);
+//             var length = ship.length;
+//             row = Math.floor(Math.random()* 10);
+//             col = Math.floor(Math.random()* 10);
 
-            if(isHorizontal){
-                if(row + length > 10){
-                    boatPlaced = false
-                }
-                else {
-                    for (var c = col; c < col + length; c++){
-                    if (computerGrid[row][c] == "*"){
-                        boatPlaced = false;
-                    }
-                    else{ boatPlaced = true;}
-                }
-                if(boatPlaced){
-                    for (var c = col; c < col + length; c++){
-                        computerGrid[row][c] = "*";
-                        console.log([row][c]);
-                    }
-                }
-                }
-            }
-            //if vertical
-            else{
-                if(col+ length > 10){
-                    boatPlaced = false
-                }
-                else {
-                    for (var r = row; r < row + length; r++){
-                    if (computerGrid[r][col] == "*"){
-                        boatPlaced = false;
-                    }
-                    else{ boatPlaced = true;}
-                    }
-                }
-                if(boatPlaced){
-                    for (var r = row; r < row + length; r++){
-                        computerGrid[r][col] = "*";
-                    }
-                }
-            }
-        }while(boatPlaced == false)
-    }
-}
+//             if(isHorizontal){
+//                 if(row + length > 10){
+//                     boatPlaced = false
+//                 }
+//                 else {
+//                     for (var c = col; c < col + length; c++){
+//                     if (computerArray[row][c] == "*"){
+//                         boatPlaced = false;
+//                     }
+//                     else{ boatPlaced = true;}
+//                 }
+//                 if(boatPlaced){
+//                     for (var c = col; c < col + length; c++){
+//                         computerArray[row][c] = "*";
+//                         console.log([row][c]);
+//                     }
+
+//                 }
+//                 }
+//             }
+//             //if vertical
+//             else{
+//                 if(col+ length > 10){
+//                     boatPlaced = false
+//                 }
+//                 else {
+//                     for (var r = row; r < row + length; r++){
+//                     if (computerArray[r][col] == "*"){
+//                         boatPlaced = false;
+//                     }
+//                     else{ boatPlaced = true;}
+//                     }
+//                 }
+//                 if(boatPlaced){
+//                     for (var r = row; r < row + length; r++){
+//                         computerArray[r][col] = "*";
+//                     }
+//                 }
+//             }
+//         }while(boatPlaced == false)
+//     }
+// }
 function Reset() {
   location.reload();
 }
@@ -215,10 +263,11 @@ function getHelp() {
 
 
 
+  
 //when user clicks start game:
 function startGame(){
   document.getElementById("whose-go").innerHTML = "Choose your target";
 }
 
-  
+
 
