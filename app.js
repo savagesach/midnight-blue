@@ -37,12 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     computerArray = [];
     let count = 100;
           square.className += "oneByOne";
-        } 
-      }
+        
+      
 
     createBoard(userGrid, userSquares, 0)
     createBoard(computerGrid, computerSquares, 100)
      //Create Board
+
      function createBoard(grid, squares, start) {
         for (let i = start; i < width*width + start; i++) {
           const square = document.createElement('div')
@@ -489,12 +490,12 @@ startButton.addEventListern("click", startGame)
 function Reset() {
   location.reload();
 }
-  else{
-    square.ClassList.add("miss")
-  }
-currentPlayer = "computer"
-startGame()
-}
+//   else{
+//     square.ClassList.add("miss")
+//   }
+// currentPlayer = "computer"
+// startGame()
+// }
 
 function computerFire(){
 let randomFire = Math.floor(Math.random()*userSquares.length)

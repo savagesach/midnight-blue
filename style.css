@@ -254,11 +254,14 @@ height: 66vh;
     /*stays a different color when chosen*/
     .selected{
       background-color:rgb(238, 22, 22);
+    
+
+      font-family: 'Bangers', cursive;
+      font-size: 10rem;
     }
-=======
-font-family: 'Bangers', cursive;
-font-size: 10rem;
-}
+
+
+
 
 .btn {
 
