@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
           square.dataset.id = i
           grid.appendChild(square)
           squares.push(square)
-          square.className += "oneByOne";
         }
       }
     //Rotate the ships
