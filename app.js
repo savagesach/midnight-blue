@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSquares = []
     const computerSquares = []
     let isHorizontal = true
-    let allShipsPlaced = false
+    var allShipsPlaced = false
     const width = 10
 
     createBoard(userGrid, userSquares, 0)
@@ -40,6 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
       }
 
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+          square.addEventListener('click', chosen);
+        }
+      }
+
       //Computer Array
     computerArray = [];
     let count = 0;
@@ -53,6 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         computerArray.push(tempArr);
     }
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
 
     //When user clicks
 // for(var d = 100; d < 200; d++)
@@ -70,6 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
 //     document.getElementById(d + '').style.backgroundColor = "red";
 //   }, false);
 // }
+
+    createBoard(userGrid, userSquares, 0)
+    createBoard(computerGrid, computerSquares, 100)
+     //Create Board
+     function createBoard(grid, squares, start) {
+        for (let i = start; i < width*width + start; i++) {
+          const square = document.createElement('div')
+          square.dataset.id = i
+          grid.appendChild(square)
+          squares.push(square)
+          square.className += "oneByOne";
+        }
+      }
 
     //Rotate the ships
     function rotate() {
@@ -414,6 +453,24 @@ function getHelp() {
   var popup = document.getElementById("rules");
   popup.classList.toggle("popup");
   }
+  
+//when user clicks start game:
+function startGame(){
+  if (allShipsPlaced){
+    document.getElementById("whose-go").innerHTML = "Choose your target";
+    document.getElementById("setup-buttons").innerHTML = " ";
+  }
+  else{
+    document.getElementById("whose-go").innerHTML = "Place your ships before clicking start!";
+  }
+}
+
+function chosen(){
+  if(document.querySelectorAll(".selected") != null){
+    document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
+  }
+  this.classList.add("selected");
+}
 
 function startGame() {
   if(isGameOver) return

@@ -27,6 +27,238 @@ height: 66vh;
 }
 
 .splash-title {
+
+    font-family: 'Bangers', cursive;
+    font-size: 10rem;
+    }
+
+    .btn {
+
+    font-size: inherit;
+    background-color: hsl(61, 100%, 50%);
+    padding: .5em 1em;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: .2em;
+    color: rgb(51, 51, 51);
+    }
+
+    .btn:hover, .btn:focus {
+    background-color: hsl(0, 0%, 100%);
+  }
+
+  .splash-btn {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
+
+  
+  /* .splash-btn:first-child {
+    margin-left: 0;
+  } */
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .battleship-grid {
+    margin: 2vmin;
+    display: grid;
+    background-color: skyblue;
+    grid-template-rows: repeat(10, 4.6vmin);
+    grid-template-columns: repeat(10, 4.6vmin);
+  }
+
+  /* .grid-computer > .taken,
+  .grid-computer > .boom {
+    background-color: skyblue !important;
+    border-radius: 0 !important;
+  } */
+
+  .taken,
+  .ship {
+    position: relative;
+    background-color: hsl(0, 0%, 80%);
+  }
+
+  .taken.start.vertical,
+  .taken.start.vertical::before {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+
+  .taken.end.vertical,
+  .taken.end.vertical::before {
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+
+  .taken.start.horizontal,
+  .taken.start.horizontal::before {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+
+  .taken.end.horizontal,
+  .taken.end.horizontal::before {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+
+  .taken.vertical::before,
+  .taken.horizontal::before {
+    content: '';
+    position: absolute;
+    border: .3vmin solid white;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+  }
+
+  .taken.horizontal::before {
+    animation: ripplesY 3s linear infinite;
+    border-left: none;
+    border-right: none;
+  }
+
+  .taken.vertical::before {
+    animation: ripplesX 3s linear infinite;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  
+  .grid-display {
+    display: flex;
+  }
+
+  .ship > div {
+    width: 4.6vmin;
+    height: 4.6vmin;
+  }
+
+  .ship {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vmin;
+    width: calc(4.6vmin * var(--width, 1));
+    height: calc(4.6vmin * var(--height, 1));
+    border-radius: 2.3vmin;
+  }
+
+  
+  .battleship-grid div {
+    border: 1px solid hsla(0, 0%, 100%, .2);
+  }
+  
+  .destroyer-container {
+    --width: 2;
+  }
+  
+  .destroyer-container-vertical {
+    --height: 2;
+    --width: 1;
+  }
+
+  .submarine-container,
+  .cruiser-container {
+    --width: 3;
+  }
+
+  .submarine-container-vertical,
+  .cruiser-container-vertical {
+    --height: 3;
+    --width: 1;
+  }
+
+  
+  .battleship-container {
+    --width: 4;
+  }
+
+  .battleship-container-vertical {
+    --height: 4;
+    --width: 1;
+  }
+
+
+  
+  .carrier-container {
+    --width: 5;
+  }
+
+  .carrier-container-vertical {
+    --height: 5;
+    --width: 1;
+  }
+
+  .hidden-info {
+    font-size: 1.5rem;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  
+  .info-text {
+    margin: 1rem;
+  }
+
+  .help {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    
+    /* The actual popup */
+    .help .helptext {
+      visibility: hidden;
+      width: 600px;
+      background-color: #555;
+      color: #fff;
+      font-size:medium;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      left: -50%;
+      top:120%;
+    }
+    /* Toggle this class - hide and show the popup */
+    .help .popup {
+      visibility: visible;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s;
+    }
+    
+    /* Add animation (fade in the popup) */
+    @-webkit-keyframes fadeIn {
+      from {opacity: 0;} 
+      to {opacity: 1;}
+    }
+    
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity:1 ;}
+    }
+    /*changes color when you hover over the computer grid*/
+    .grid-computer .oneByOne:hover {
+      background-color: red;
+    }
+
+    /*stays a different color when chosen*/
+    .selected{
+      background-color:rgb(238, 22, 22);
+    }
+=======
 font-family: 'Bangers', cursive;
 font-size: 10rem;
 }

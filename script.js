@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     let allShipsPlaced = false
 
+function chosen(){
+    if(document.querySelectorAll(".selected") != null){
+      document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
+    }
+    this.classList.add("selected");
+  }
+
     //Rotates Ships **NOT WORKING CURRENTLLY
     function rotate() {
         if (isHorizontal) {
