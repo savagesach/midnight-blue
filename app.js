@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
      function createBoard(grid, squares) {
         for (let i = 0; i < width*width; i++) {
           const square = document.createElement('div')
-          square.id = i
+          square.className = i
           grid.appendChild(square)
           squares.push(square)
         }
