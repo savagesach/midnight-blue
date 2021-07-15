@@ -254,3 +254,8 @@ body {
     .grid-computer .oneByOne:hover {
       background-color: red;
     }
+
+    /*stays a different color when chosen*/
+    .selected{
+      background-color:rgb(238, 22, 22);
+    }

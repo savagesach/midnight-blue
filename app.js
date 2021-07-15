@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           grid.appendChild(square)
           squares.push(square)
           square.className += "oneByOne";
+          square.addEventListener('click', chosen);
         }
       }
       //Computer Array
@@ -53,68 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
             count++;
         }
         computerArray.push(tempArr);
-    }createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
-      //Computer Array
-    computerArray = [];
-    count = 0;
-    for(var i = 0; i < 10; i++)
-    {
-        var tempArr = [];
-        for(var j = 0; j < 10; j++)
-        {
-            tempArr.push[document.getElementById(count)];
-            count++;
-        }
-        computerArray.push(tempArr);
     }
-        createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
-      //Computer Array
-    var computerArray = [];
-    count = 0;
-    for(var i = 0; i < 10; i++)
-    {
-        var tempArr = [];
-        for(var j = 0; j < 10; j++)
-        {
-            tempArr.push[document.getElementById(count)];
-            count++;
-        }
-        computerArray.push(tempArr);
-    }
-    createBoard(userGrid, userSquares, 0)
-    createBoard(computerGrid, computerSquares, 100)
-     //Create Board
-     function createBoard(grid, squares, start) {
-        for (let i = start; i < width*width + start; i++) {
-          const square = document.createElement('div')
-          square.dataset.id = i
-          grid.appendChild(square)
-          squares.push(square)
-          square.className += "oneByOne";
-        }
-      }
+     
+  
       
     //Rotate the ships
     function rotate() {
@@ -313,8 +255,15 @@ function startGame(){
   else{
     document.getElementById("whose-go").innerHTML = "Place your ships before clicking start!";
   }
- 
 }
 
-  
+
+function chosen(){
+  if(document.querySelectorAll(".selected") != null){
+    document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
+  }
+  this.classList.add("selected");
+}
+
+
 
