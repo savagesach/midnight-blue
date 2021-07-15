@@ -13,8 +13,12 @@ for(let row of rowElements)
 }
     
 ////////////////////Clicking & Selecting//////////////////////////////////////////////////////////////////////////////
-function chosen()
-{
+function chosen(){
+    if(document.querySelectorAll(".selected") != null){
+      document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
+    }
+    this.classList.add("selected");
+  }
 
 //////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
 
