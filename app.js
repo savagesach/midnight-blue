@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var allShipsPlaced = false
     const width = 10
 
-
-
     createBoard(userGrid, userSquares, 0)
     createBoard(computerGrid, computerSquares, 100)
 
@@ -28,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
           square.id = i
           grid.appendChild(square)
           squares.push(square)
-<<<<<<< HEAD
-=======
         }
       }
 
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     computerArray = [];
     let count = 100;
->>>>>>> dbed642a29bdd8f141746cbf7e1cacd89e23be1b
           square.className += "oneByOne";
         } 
       }
@@ -58,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
           square.addEventListener('click', chosen);
         }
       }
+
       //Computer Array
     computerArray = [];
     let count = 0;
@@ -71,10 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         computerArray.push(tempArr);
     }
-<<<<<<< HEAD
-     
-  
-=======
     createBoard(userGrid, userSquares, 0)
     createBoard(computerGrid, computerSquares, 100)
      //Create Board
@@ -87,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
           square.className += "oneByOne";
         }
       }
-
 
     //When user clicks
 // for(var d = 100; d < 200; d++)
@@ -118,8 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
           square.className += "oneByOne";
         }
       }
->>>>>>> dbed642a29bdd8f141746cbf7e1cacd89e23be1b
-      
+
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
@@ -446,6 +436,15 @@ function randomPlace(){
         }while(boatPlaced == false)
     }
 }
+randomPlace(allShips[0])
+randomPlace(allShips[1])
+randomPlace(allShips[2])
+randomPlace(allShips[3])
+randomPlace(allShips[4])
+
+document.getElementById("start").addEventListener("click", randomPlace)
+document.getElementById("start").addEventListener("click", startGame)
+
 function Reset() {
   location.reload();
 }
@@ -454,9 +453,6 @@ function getHelp() {
   var popup = document.getElementById("rules");
   popup.classList.toggle("popup");
   }
-
-
-
   
 //when user clicks start game:
 function startGame(){
@@ -469,8 +465,6 @@ function startGame(){
   }
 }
 
-
-<<<<<<< HEAD
 function chosen(){
   if(document.querySelectorAll(".selected") != null){
     document.querySelectorAll(".selected").forEach(element => element.classList.remove("selected"));
@@ -478,7 +472,52 @@ function chosen(){
   this.classList.add("selected");
 }
 
+function startGame() {
+  if(isGameOver) return
+  if(currentPlayer=== "user"){
+      document.getElementById("whose-go").innerHTML = "Your Turn!";
+      computerSquares.forEach(square => square.addEventListener('click',function(e){
+        fire(square)
+      }))
+    }
+    if(currentPlayer==="computer"){
+      whoseTurn.innerHTML = "CPU Turn!";
+      computerFire()
+    }
+  }
+startButton.addEventListern("click", startGame)
+function Reset() {
+  location.reload();
+}
+  else{
+    square.ClassList.add("miss")
+  }
+currentPlayer = "computer"
+startGame()
+}
 
-=======
->>>>>>> dbed642a29bdd8f141746cbf7e1cacd89e23be1b
-
+function computerFire(){
+let randomFire = Math.floor(Math.random()*userSquares.length)
+if(userSquares[randomFire].classList.contains('taken')){
+  userSquares[randomFire].classList.add('hit')
+}
+else{
+  userSquares[randomFire].classList.add('miss')
+}
+currentPlayer = "user"
+document.getElementById("whose-go").innerHTML = "Your Turn"
+}
+function endGame(){
+  if(!userSquares.classList.contains('taken')){
+    document.getElementById("whose-go").innerHTML = "CPU has won the game!"
+    gameOver()
+  }
+  if(!computerSqaures.classList.contains('taken')){
+    document.getElementById("whose-go").innerHTML = "You have won the game!"
+    gameOver()
+  }
+}
+function gameOver(){
+  isGameOver = true
+  startButton.innerHTML = "Restart Game"
+}

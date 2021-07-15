@@ -33,10 +33,13 @@ function chosen(){
     this.classList.add("selected");
   }
 
+<<<<<<< HEAD
 //allows the user to lock in their guess and see if they were correct or not
 function fire(){
 
 }
+=======
+>>>>>>> fd187a438b3f8a593265c79859f637d6ec90be1c
 //////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
 
 //Randomizing for computer
@@ -49,8 +52,5 @@ var destroyer = {name: "Destroyer", length: 2};
 var allShips = [carrier, battleship, cruiser, submarine, destroyer]; 
 while(allShips.length > 0)
 {
-
-}
-
 
 //////////////////////////////////Computer randomly guess*/////////////////////////////////////////////////////////////////////////////
