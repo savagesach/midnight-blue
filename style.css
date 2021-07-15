@@ -66,6 +66,18 @@ background-color: skyblue !important;
 border-radius: 0 !important;
 }
 
+.row {
+  width: 100%;
+  height:1000%;
+}
+.col {
+  width:100%;
+  height:10%;
+}
+
+.grid-computer .col:hover{
+  background-color:black;
+}
 .taken,
 .ship {
 position: relative;
