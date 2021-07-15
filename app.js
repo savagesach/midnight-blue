@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         computerArray.push(tempArr);
     }
 
+    
+
     //Rotate the ships
     function rotate() {
       if (isHorizontal) {
