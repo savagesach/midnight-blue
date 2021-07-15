@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSquares = []
     const computerSquares = []
     let isHorizontal = true
+    let allShipsPlaced = false
     const width = 10
 
     createBoard(userGrid, userSquares)
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
           square.dataset.id = i
           grid.appendChild(square)
           squares.push(square)
-          square.className += "oneByOne";
         }
       }
     //Rotate the ships
@@ -213,9 +213,12 @@ function getHelp() {
   popup.classList.toggle("popup");
   }
 
+
+
 //when user clicks start game:
 function startGame(){
   document.getElementById("whose-go").innerHTML = "Choose your target";
 }
 
   
+
