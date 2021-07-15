@@ -19,6 +19,7 @@ function chosen(){
     }
     this.classList.add("selected");
   }
+
 //////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
 
 //Randomizing for computer
@@ -31,8 +32,5 @@ var destroyer = {name: "Destroyer", length: 2};
 var allShips = [carrier, battleship, cruiser, submarine, destroyer]; 
 while(allShips.length > 0)
 {
-
-}
-
 
 //////////////////////////////////Computer randomly guess*/////////////////////////////////////////////////////////////////////////////
