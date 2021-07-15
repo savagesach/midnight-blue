@@ -164,7 +164,7 @@ function randomPlace(){
             col = Math.floor(Math.random()* 10);
 
             if(isHorizontal){
-                if(row + length > computerGrid.length){
+                if(row + length > 10){
                     boatPlaced = false
                 }
                 else {
@@ -177,14 +177,14 @@ function randomPlace(){
                 if(boatPlaced){
                     for (var c = col; c < col + length; c++){
                         computerGrid[row][c] = "*";
+                        console.log([row][c]);
                     }
-
                 }
                 }
             }
             //if vertical
             else{
-                if(col+ length > computerGrid.length){
+                if(col+ length > 10){
                     boatPlaced = false
                 }
                 else {
@@ -212,3 +212,13 @@ function getHelp() {
   var popup = document.getElementById("rules");
   popup.classList.toggle("popup");
   }
+
+
+
+//when user clicks start game:
+function startGame(){
+  document.getElementById("whose-go").innerHTML = "Choose your target";
+}
+
+  
+
