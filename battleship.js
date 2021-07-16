@@ -88,7 +88,6 @@ function initialize() {
             for (let y = boat.topLeftCornerY; y < boat.topLeftCornerY + bottomBuffer; y++) {
                 board[y][x].isOccupied = true;
                 boatCellsRemaining++
-                board[y][x].cell.style.setProperty("background-color", "black");
             }
         }
     }
@@ -105,9 +104,9 @@ function missleFire() {
     if(this.boatSegment.isOccupied) {
         //reduce the number of boat cells remaining
         boatCellsRemaining--
-        this.boatSegment.cell.style.setProperty("background-color", "red");
+        this.boatSegment.cell.style.setProperty("background-image", "url('Shooting-Images/hit.png')");
     } else {
-        this.boatSegment.cell.style.setProperty("background-color", "white");
+        this.boatSegment.cell.style.setProperty("background-image", "url('Shooting-Images/missed.png')");
     }
     //detect if the user has won or lost
     if(boatCellsRemaining === 0) {
