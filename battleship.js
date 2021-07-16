@@ -241,6 +241,8 @@ function initialize() {
         }
     }
 }
+
+//player shot
 var hitSquares = [];
 function missleFire() {
     //if this cell was already fired upon
@@ -372,10 +374,10 @@ function computerShoot(r, c)
 function smartShot()
 {
     console.log(phitSquares);
-    for(let i = 0; i < phitSquares.length; i++)
-    {
         for( let j = 0; j < pfleetSquares.length; j++)
         {
+            console.log(pfleetSquares.indexOf(phitSquares) != -1)
+            console.log(pfleetSquares[j]);
             if(pfleetSquares.indexOf(phitSquares) != -1)
             {
                 let dir = Math.ceil(Math.random()*4);
@@ -431,7 +433,7 @@ function smartShot()
                 }
                 return;
             }
-        }
+        
     }
     while(true)
     {
