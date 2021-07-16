@@ -24,6 +24,6 @@ body {
     width: auto;
     margin: 10px;
 }
-.info-text{
+#info-text{
     text-align: center;
 }
