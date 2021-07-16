@@ -1,16 +1,10 @@
-for(let row of rowElements) 
-{
-    let rowArray = [];
-    board.push(rowArray);
-    let squareHolder = row.getElementsByClassName("col");
-    for(let square of squareHolder) {
-        square.addEventListener("click", chosen, false);
-        var boatSegment = {cell: col, isOccupied: false, firedUpon: false}
-        rowArray.push(boat);
-        col.boat = boat;
-    }
-}
-    
+var board = [];
+var userSquares = [];
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////Clicking & Selecting//////////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
     const displayGrid = document.querySelector('.grid-display')
@@ -75,6 +69,18 @@ function chosen(){
       rotateButton.addEventListener('click', rotate)
   
       //move around user ship
+    var rowElements = document.getElementsByClassName("plyRow")
+    {
+      let rowArray = [];
+      let squareHolder = row.getElementsByClassName("col");
+      for(let square of squareHolder) {
+          square.addEventListener("click", chosen, false);
+          var boat = {cell: col, isOccupied: false, firedUpon: false}
+          rowArray.push(boat);
+          col.boat = boat;
+      }
+      userSquares.push(rowArray);
+    }
       ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
       userSquares.forEach(square => square.addEventListener('dragstart', dragStart))
       userSquares.forEach(square => square.addEventListener('dragover', dragOver))
@@ -287,10 +293,14 @@ function chosen(){
 function fire(){
     
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////Buttons at the bottom///////////////////////////////////////////////////////////////////////////
 
 
-//Randomizing for computer
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Randomizing for computer - Lana
 var carrier = {name: "carrier", length: 5};
 var battleship = {name: "Battleship", length: 4};
 var cruiser = {name: "Cruiser", length: 3};
@@ -298,9 +308,79 @@ var submarine = {name: "Submarine", length: 3};
 var destroyer = {name: "Destroyer", length: 2};
 
 var allShips = [carrier, battleship, cruiser, submarine, destroyer]; 
-// while(allShips.length > 0)
-// {
 
+//adds to the computer board
+function initialize()
+{
+  var rowElements = document.getElementsByClassName("comRow");
+  for(let row of rowElements) {
+    let rowArray = [];
+    board.push(rowArray);
+    let colElements = row.getElementsByClassName("col");
+    for(let col of colElements) {
+        col.addEventListener("click", missleFire, false);
+        var boatSegment = {cell: col, isOccupied: false, firedUpon: false}
+        rowArray.push(boatSegment);
+        col.boatSegment = boatSegment;
+    }
+  }
+    //starts to place the ships
+  while(allShips.length > 0)
+  {
+    var ship = allShips[0];
+    //horizontal
+    if(Math.random() < .5)
+    {
+      let row = Math.floor(Math.random()*10);
+      let col = Math.floor(Math.random()*(10-ship.length));
+      let open = true;
+      //checks if the spaces are open
+      for(let i = 0; i < ship.length; i++)
+      {
+        console.log(board);
+        if(board[row + i][col].isOccupied)
+        {
+          open = false;
+          break;
+        }
+      }
+      //places the boat if its open
+      for(let i = 0; i < ship.length; i++)
+      {
+        board[row + i][col].isOccupied = true;
+        board[row + i][col].cell.style.setProperty("background-color", "black");
+        allShips.shift();
+      }
+    }
+    //vertical
+    else
+    {
+      let row = Math.floor(Math.random()*(10-ship.length));
+      let col = Math.floor(Math.random()*10);
+      let open = true;
+      //checks if the spaces are open
+      for(let i = 0; i < ship.length; i++)
+      {
+        console.log(board);
+        if(board[row][col + i].isOccupied)
+        {
+          open = false;
+          break;
+        }
+      }
+      //places the boat if its open
+      for(let i = 0; i < ship.length; i++)
+      {
+        board[row][col + i].isOccupied = true;
+        board[row][col + i].cell.style.setProperty("background-color", "black");
+        allShips.shift();
+      }
+    
+    }
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////Computer randomly guess////////////////////////////////////////////////////////////////////////////
 
 
