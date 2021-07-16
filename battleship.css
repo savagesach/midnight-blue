@@ -1,0 +1,16 @@
+body {
+    background-color: white;
+}
+.grid{
+    margin-left: 100px;
+    width: 500px;
+    background-color: skyblue;
+    display: inline-block;
+}
+.cell {
+    text-shadow: 2px 2px black;
+    padding: 10px;
+    background-color: skyblue;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    height: 50px;
+}
