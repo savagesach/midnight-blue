@@ -3,46 +3,36 @@ var fleet = [
     {
         name: "Aircraft Carrier",
         length: 5,
-        width: 2,
-        isHorizontal: Math.floor(Math.random() * 2) == 1,
-        topLeftCornerX: null,
-        topLeftCornerY: null
     },
     {
         name: "Battleship",
         length: 5,
-        width: 1,
-        isHorizontal: Math.floor(Math.random() * 2) == 1,
-        topLeftCornerX: null,
-        topLeftCornerY: null
     },
     {
         name: "Destroyer",
         length: 4,
-        width: 1,
-        isHorizontal: Math.floor(Math.random() * 2) == 1,
-        topLeftCornerX: null,
-        topLeftCornerY: null
     },
     {
         name: "Cruiser",
         length: 3,
-        width: 1,
-        isHorizontal: Math.floor(Math.random() * 2) == 1,
-        topLeftCornerX: null,
-        topLeftCornerY: null
     },
     {
         name: "PT Boat",
         length: 2,
-        width: 1,
-        isHorizontal: Math.floor(Math.random() * 2) == 1,
-        topLeftCornerX: null,
-        topLeftCornerY: null
     }
 ]
+var fleetSquares = []
+for(let a = 0; a < fleet.length; a++)
+{
+    let temp = [];
+    for(let b = 0; b < fleet[a].length; b++)
+    {
+        temp.push(NaN);
+    }
+    fleetSquares.push(temp);
+}
 var numberOfMisslesRemaining = 90;
-var boatCellsRemaining = 0;
+
 function initialize() {
     //make the board
     var rowElements = document.getElementsByClassName("crow");
@@ -57,41 +47,111 @@ function initialize() {
             col.boatSegment = boatSegment;
         }
     }
-    //set the ships on the board
-    for(let boat of fleet) {
-        let rightBuffer = boat.width;
-        let bottomBuffer = boat.length;
-        if(boat.isHorizontal) {
-            rightBuffer = boat.length;
-            bottomBuffer = boat.width;
-        }
-        let boatIsNotProperlyPlaced = true;
-        while(boatIsNotProperlyPlaced) {
-            //propose an x-coordinate for the boat
-            boat.topLeftCornerX = Math.floor(Math.random() * (board.length - rightBuffer + 1));
-            boat.topLeftCornerY = Math.floor(Math.random() * (board.length - bottomBuffer + 1));
-            let x = boat.topLeftCornerX;
-            let y = boat.topLeftCornerY;
-            let boatIsProperlyPlaced = true;
-            //determine if any of the locations for this proposed boat location are already occupied
-            while(x < boat.topLeftCornerX + rightBuffer && boatIsProperlyPlaced) {
-                while(y < boat.topLeftCornerY + bottomBuffer && boatIsProperlyPlaced) {
-                    boatIsProperlyPlaced = !board[y][x].isOccupied;
-                    y++;
+
+    for(let b = 0; b < fleet.length;)
+    {
+        let boat = fleet[b];
+        if(Math.random() < .5)
+        {
+            let r = Math.floor(Math.random()*10);
+            let c = Math.floor(Math.random()*(10-boat.length));
+            let open = true;
+            for(let i = 0; i < boat.length; i++)
+            {
+                // if(r + 1 != 10)
+                // {
+                //     if(board[r+1][c+i].isOccupied)
+                //     {
+                //         open = false;
+                //         break;
+                //     }
+                // }
+                // if(r - 1 != -1)
+                // {
+                //     if(board[r-1][c+i].isOccupied)
+                //     {
+                //         open = false;
+                //         break;
+                //     }
+                // }
+                if(board[r][c+i].isOccupied)
+                {
+                    open = false;
+                    break;
                 }
-                x++;
             }
-            //if we found an intersection, try again
-            boatIsNotProperlyPlaced = !boatIsProperlyPlaced;
+            if(open)
+            {
+                console.log("horizontal boat at " + c + ", " + r + ". Length: " + boat.length);
+                for(let i = 0; i < boat.length; i++)
+                {
+                    fleetSquares[b][i] = board[r][c+i];
+                    board[r][c+i].isOccupied = true;
+                    if((r + 1) != 10)
+                    {
+                        board[r+1][c+i].isOccupied = true;
+                    }
+                    if((r - 1) != -1)
+                    {
+                        board[r-1][c+i].isOccupied = true;
+                    }
+                    board[r][c+i].cell.style.setProperty("background-color", "black");
+                }
+                b++;
+            }
         }
-        for(let x = boat.topLeftCornerX; x < boat.topLeftCornerX + rightBuffer; x++) {
-            for (let y = boat.topLeftCornerY; y < boat.topLeftCornerY + bottomBuffer; y++) {
-                board[y][x].isOccupied = true;
-                boatCellsRemaining++
+        else
+        {
+            let r = Math.floor(Math.random()*(10-boat.length));
+            let c = Math.floor(Math.random()*(10));
+            let open = true;
+            for(let i = 0; i < boat.length; i++)
+            {
+                // if(c + 1 != 10)
+                // {
+                //     if(board[r+i][c+1].isOccupied)
+                //     {
+                //         open = false;
+                //         break;
+                //     }
+                // }
+                // if(c - 1 != -1)
+                // {
+                //     if(board[r+i][c-1].isOccupied)
+                //     {
+                //         open = false;
+                //         break;
+                //     }
+                // }
+                if(board[r+i][c].isOccupied)
+                {
+                    open = false;
+                    break;
+                }
+            }
+            if(open)
+            {
+                console.log("vertical boat at " + c + ", " + r + ". Length: " + boat.length);
+                for(let i = 0; i < boat.length; i++)
+                {
+                    fleetSquares[b][i] = board[r+i][c];
+                    board[r+i][c].isOccupied = true;
+                    if((c + 1) != 10)
+                    {
+                        board[r+i][c+1].isOccupied = true;
+                    }
+                    if((c - 1) != -1)
+                    {
+                        board[r+i][c-1].isOccupied = true;
+                    }
+                    board[r+i][c].cell.style.setProperty("background-color", "black");
+                }
+                b++;
             }
         }
     }
 }
+var hitSquares = [];
 function missleFire() {
     //if this cell was already fired upon
     if(this.boatSegment.firedUpon) {
@@ -103,15 +163,37 @@ function missleFire() {
     //if this is a hit
     if(this.boatSegment.isOccupied) {
         //reduce the number of boat cells remaining
-        boatCellsRemaining--
         this.boatSegment.cell.style.setProperty("background-image", "url('Shooting-Images/hit.png')");
+        hitSquares.push(this.boatSegment);
+
+        for(let i = 0; i < fleetSquares.length; i++)
+        {
+            let sunk = true;
+            for(let j = 0; j < fleetSquares[i].length; j++)
+            {
+                if(hitSquares.indexOf(fleetSquares[i][j]) == -1)
+                {
+                    sunk = false;
+                    break;
+                }
+            }
+            if(sunk)
+            {
+                console.log(i);
+                for(let j = 0; j < fleetSquares[i].length; j++)
+                {
+                    fleetSquares[i][j].cell.style.setProperty("background-color", "maroon");
+                }
+                fleetSquares.splice(i, 1);
+                break;
+            }
+        }
+
     } else {
         this.boatSegment.cell.style.setProperty("background-image", "url('Shooting-Images/missed.png')");
     }
     //detect if the user has won or lost
-    if(boatCellsRemaining === 0) {
-        alert("You won");
-    } else if(numberOfMisslesRemaining === 0) {
+    if(numberOfMisslesRemaining === 0) {
         alert("You lost");
     }
 }
