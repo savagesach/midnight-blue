@@ -2,6 +2,7 @@ body {
     background-color: white;
 }
 .grid{
+    margin-top: 100px;
     margin-left: 100px;
     width: 500px;
     background-color: skyblue;
