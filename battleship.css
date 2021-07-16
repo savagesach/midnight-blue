@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+}
+.grid{
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 500px;
+    background-color: skyblue;
+    display: inline-block;
+}
+.cell {
+    text-shadow: 2px 2px black;
+    padding: 10px;
+    background-color: skyblue;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    height: 50px;
+}
+#setup-buttons{
+    text-align: center;
+}
+.btn{
+    background-color: yellow;
+    font-size: 24px;
+    height: 50px;
+    width: auto;
+    margin: 10px;
+}
+#info-text{
+    text-align: center;
+}

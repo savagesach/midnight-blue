@@ -1,10 +1,7 @@
-/* .grid{
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    border-style: solid;
-    border-width: 1px;
-} */
+.col_cell{
+  width: 50px;
+  height: 50px;
+}
 body {              
     margin: 0;
     background-color: #F3F3F3;
@@ -257,11 +254,14 @@ height: 66vh;
     /*stays a different color when chosen*/
     .selected{
       background-color:rgb(238, 22, 22);
+    
+
+      font-family: 'Bangers', cursive;
+      font-size: 10rem;
     }
-=======
-font-family: 'Bangers', cursive;
-font-size: 10rem;
-}
+
+
+
 
 .btn {
 
